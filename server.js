@@ -4,11 +4,11 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.get('/', function (req, res) {
-  res.sendFile('client/html/index.html' , { root : "."});
+  res.sendFile(__dirname + '/client/html/index.html');
 });
 
-app.use('/js', express.static('client/js' , { root : "."}));
-app.use('/bc', express.static('client/bower_components' , { root : "."}));
+app.use('/js', express.static(__dirname + '/client/js'));
+app.use('/bc', express.static(__dirname + '/client/bower_components'));
 
 
 io.on('connection', function(socket){
